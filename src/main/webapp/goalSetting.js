@@ -20,17 +20,16 @@ function goalSetSave() {
 	//	console.log(goalInput.value);
 	if (goalInput.value !== "") {
 		console.log("セーブできました");
-		//fetchでバックエンドにデータ送信
-		fetch('http://localhost:8080/goal', {
+		// 入力した目標を保存する
+		fetch('http://localhost:8080/Redmine-Study/save', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ goal: '目標を入力' }), // 送信するデータ
-			mode: 'cors' // CORSを明示的に設定
+			body: JSON.stringify({ goalSetting: goalInput.value }), // 送信するデータをJSON形式に変換
 		})
-			.then(response => response.json())
-			.then(data => console.log(data))
+			.then(response => response.json()) //レスポンスをJSON形式に変換
+			.then(data => console.log(data)) //レスポンス値を返却
 			.catch(error => console.error('エラー:', error));
 	}
 }
