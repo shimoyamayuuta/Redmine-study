@@ -15,7 +15,13 @@ public class SaveDao {
 	public SaveDao() {
 		db = new DbConnect();
 	}
-
+	
+	/**
+	 * 目標を作成する
+	 * @param settedGoal
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 */
 	public void insertGoal(String settedGoal) throws SQLException, ClassNotFoundException {
 		Connection conn = db.getConnection();
 
